@@ -44,6 +44,7 @@ before_install:
   - perl -V
   - cpanm --quiet --notest ExtUtils::F77 Term::ReadLine::Gnu PGPLOT # do not need tests
   - cpanm --quiet --notest Devel::CheckLib # specify this now because this is a CONFIGURE_REQUIRES for author-side
+  - cpanm --verbose Alien::HDF4
   - cpanm --force --verbose ExtUtils::ParseXS # we install the latest ExtUtils::ParseXS
   - build-dist
   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
