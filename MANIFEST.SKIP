@@ -9,6 +9,7 @@
 \.swp$
 .exe$
 /\.\#.*
+/core$
 /pm_to_blib$
 /tmp.*
 Benchmark/Bench.c
@@ -37,7 +38,6 @@ RCS
 \.swp$
 \.tar\.gz$
 \.travis\.yml$
-/core$
 \b_eumm/
 ^Basic/Bad/Bad\.c$
 ^Basic/Bad/Bad\.pm$
@@ -45,12 +45,7 @@ RCS
 ^Basic/Complex/Complex\.c
 ^Basic/Complex/Complex\.pm
 ^Basic/Complex/Complex\.xs
-^Basic/Core/Config\.pm
-^Basic/Core/Config\.pm
 ^Basic/Core/Core\.c$
-^Basic/Core/Types\.pm$
-^Basic/Core/Version\.pm
-^Basic/Core/Version\.pm
 ^Basic/Core/check_endian$
 ^Basic/Core/pdlbadvalinit\.c$
 ^Basic/Core/pdldataswitch\.c$
@@ -58,9 +53,6 @@ RCS
 ^Basic/Core/pdl\.h$
 ^Basic/Core/pdlcore\.[ch]$
 ^Basic/Core/pdlsimple\.h$
-^Basic/Gen/PP/Dump\.pm$
-^Basic/Gen/PP/Dump\.pm\.tmp$
-^Basic/Gen/pptemplate.pod$
 ^Basic/Math/Math\.c$
 ^Basic/Math/Math\.pm$
 ^Basic/Math/Math\.xs$
@@ -86,6 +78,9 @@ RCS
 ^Demos/BAD_demo.pm$
 ^Demos/TkTriD_demo.pm$
 ^Demos/TriD/test6.p$
+^Doc/docscan$
+^Doc/pdlfunc\.pod
+^Doc/pdlhead2item$
 ^LOG$
 ^[.]Inline
 ^\.\#.*
@@ -107,6 +102,11 @@ RCS
 ^gsl.pl
 ^inv-data.pl
 ^kitchen-sink
+^lib/PDL/Config\.pm
+^lib/PDL/Doc/Config.pm$
+^lib/PDL/PP/Dump\.pm$
+^lib/PDL/Types\.pm$
+^lib/PDL/Version\.pm
 ^patch
 ^pdl$
 ^pdl.*-log.txt$
