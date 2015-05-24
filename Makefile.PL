@@ -439,58 +439,60 @@ my $preop = '';
 $preop .= q[git log --stat --since='29 Apr 2009' > Changes.new && $(MV) Changes.new $(DISTVNAME)/Changes] if $^O ne 'MSWin32';
 
 my %makefile_hash = (
-	      'PREREQ_PM' => { @prereq },
-              'CONFIGURE_REQUIRES' => {
-                'Devel::CheckLib' => 1.01,
-                'Carp'            => 1.20,    # EU::MM seems to need this not to crash
-                'ExtUtils::MakeMaker' => 6.56,
-              },
-              TEST_REQUIRES => {
-                'CPAN::Meta' => '2.120900',
-                'Test::Exception' => 0,
-                'Test::Warn' => 0,  # for t/pptest.t
-                'Test::Deep' => 0,
-              },
-              BUILD_REQUIRES => {
-                'ExtUtils::MakeMaker' => 0,
-                'ExtUtils::ParseXS'   => 3.01, # avoids 2.21, known broken
-                'File::Path'          => 0,
-              },
-              'MIN_PERL_VERSION' => '5.010',
-	      'NAME' => 'PDL',
-	      'VERSION_FROM' => 'Basic/Core/Version.pm',
-	      'EXE_FILES' => \@exe_files,
-	      'PM' => { @podpms }, #so that the script docs are picked up
-              'META_MERGE' => {
-                 resources => {
-                    homepage => 'http://pdl.perl.org/',
-                    bugtracker  => 'http://sourceforge.net/p/pdl/bugs/',
-                    repository  => {
-                       url => 'git://git.code.sf.net/p/pdl/code',
-                       type => 'git',
-                       web => 'http://sourceforge.net/p/pdl/code/ci/master/tree/',
-                    },
-                 },
-              },
-	      'OPTIMIZE'  => $PDL::Config{OPTIMIZE} || $Config{optimize},
-	      'CCFLAGS' => $ccflags,
-	      'dist'     => { COMPRESS => 'gzip',
-                              SUFFIX   => 'gz',
-                              ($preop ? (PREOP => $preop) : ()), },
-	      'clean' => {
-		'FILES' => join ' ', @cleanup, qw(
-                  tbyte.tif tmp0 tmp0.hdr tushort.tif
-                  MANIFEST.bak tmp1* tmpraw* t/tmpraw* t/tmp1*
-                  _Inline/ .inlinepdlpp/ .inlinewith/ *.xfig
-                ),
-              },
-	      'realclean' => {'FILES' => 'Basic/Core/Config.pm'},
-              'AUTHOR' => 'PerlDL Developers (pdl-general@lists.sourceforge.net)',
-              'ABSTRACT' => 'Perl Data Language',
-              'BINARY_LOCATION' => 'PDL.tar.gz',
+  'PREREQ_PM' => { @prereq },
+  'CONFIGURE_REQUIRES' => {
+    'Devel::CheckLib' => 1.01,
+    'Carp'            => 1.20, # EU::MM seems to need this not to crash
+    'ExtUtils::MakeMaker' => 6.56,
+  },
+  TEST_REQUIRES => {
+    'CPAN::Meta' => '2.120900',
+    'Test::Exception' => 0,
+    'Test::Warn' => 0,  # for t/pptest.t
+    'Test::Deep' => 0,
+  },
+  BUILD_REQUIRES => {
+    'ExtUtils::MakeMaker' => 0,
+    'ExtUtils::ParseXS' => 3.01, # avoids 2.21, known broken
+    'File::Path' => 0,
+  },
+  'MIN_PERL_VERSION' => '5.010',
+  'NAME' => 'PDL',
+  'VERSION_FROM' => 'Basic/Core/Version.pm',
+  'EXE_FILES' => \@exe_files,
+  'PM' => { @podpms }, #so that the script docs are picked up
+  'META_MERGE' => {
+     resources => {
+        homepage => 'http://pdl.perl.org/',
+        bugtracker  => 'http://sourceforge.net/p/pdl/bugs/',
+        repository  => {
+           url => 'git://git.code.sf.net/p/pdl/code',
+           type => 'git',
+           web => 'http://sourceforge.net/p/pdl/code/ci/master/tree/',
+        },
+     },
+  },
+  'OPTIMIZE'  => $PDL::Config{OPTIMIZE} || $Config{optimize},
+  'CCFLAGS' => $ccflags,
+  'dist'     => {
+    COMPRESS => 'gzip',
+    SUFFIX   => 'gz',
+    ($preop ? (PREOP => $preop) : ()),
+  },
+  'clean' => {
+    'FILES' => join ' ', @cleanup, qw(
+      tbyte.tif tmp0 tmp0.hdr tushort.tif
+      MANIFEST.bak tmp1* tmpraw* t/tmpraw* t/tmp1*
+      _Inline/ .inlinepdlpp/ .inlinewith/ *.xfig
+    ),
+  },
+  'realclean' => {'FILES' => 'Basic/Core/Config.pm'},
+  'AUTHOR' => 'PerlDL Developers (pdl-general@lists.sourceforge.net)',
+  'ABSTRACT' => 'Perl Data Language',
+  'BINARY_LOCATION' => 'PDL.tar.gz',
 
-	      %notestsifmodulesmissing,
-    );
+  %notestsifmodulesmissing,
+);
 
 =begin comment
 
